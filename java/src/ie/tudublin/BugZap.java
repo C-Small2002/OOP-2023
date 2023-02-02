@@ -66,6 +66,11 @@ public class BugZap extends PApplet
 		drawBug();
 		moveBug();
 		text("SCORE: " + score, 20, 20);
+		if (bugY > height)
+			{
+				textAlign(CENTER);
+				text("GAME OVER!!!", width/2,height/2);
+			}
 	}
 
 	public void drawPlayer(float x, float y, float w)
@@ -90,6 +95,7 @@ public class BugZap extends PApplet
 		if (frameCount % 30 == 0)
 		{
 			bugX += random(-5,5);
+			bugY+= score/2;
 			if(bugX < halfBugWidth)
 			{
 				bugX = halfBugWidth;

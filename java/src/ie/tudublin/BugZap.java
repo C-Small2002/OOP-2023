@@ -1,5 +1,7 @@
 package ie.tudublin;
 
+import javazoom.jl.player.Player;
+import jogamp.nativewindow.ResourceToolkitLock;
 import processing.core.PApplet;
 
 public class BugZap extends PApplet
@@ -14,6 +16,9 @@ public class BugZap extends PApplet
 	float bugX;
 	float bugY;
 	float bugWidth;
+	float halfBugWidth;
+
+	int score;
 
 
 	public void settings()
@@ -25,6 +30,16 @@ public class BugZap extends PApplet
 	{
 		playerX = width / 2;
 		playerY = height - 50;
+		resetBug();
+	}
+
+	void resetBug()
+	{
+		
+		bugY = 50;
+		bugWidth = 30;
+		halfBugWidth = bugWidth /2;
+		bugX = random(halfBugWidth, width - halfBugWidth);
 	}
 
 	public void setup() {
@@ -33,15 +48,13 @@ public class BugZap extends PApplet
 
 		smooth();
 
-		playerX = width /2;
+		score = 0;
+
+		playerX = width /2; //playerX = width * 0.5f
 		playerY = height - 50;
 		playerWidth = 50;
 		playerSpeed = 5;
 		halfPlayerWidth = playerWidth/2;
-
-		bugX = 30;
-		bugY = 30;
-		bugWidth = 30;
 
 	}
 
@@ -51,6 +64,8 @@ public class BugZap extends PApplet
 		background(0);
 		drawPlayer(playerX,playerY,playerWidth);
 		drawBug();
+		moveBug();
+		text("SCORE: " + score, 20, 20);
 	}
 
 	public void drawPlayer(float x, float y, float w)
@@ -67,7 +82,24 @@ public class BugZap extends PApplet
 	{
 		strokeWeight(2);
 		stroke(255);
-		line(bugX,bugY-10, bugX, bugY-20);
+		circle(bugX,bugY,bugWidth);
+	}
+
+	public void moveBug()
+	{
+		if (frameCount % 30 == 0)
+		{
+			bugX += random(-5,5);
+			if(bugX < halfBugWidth)
+			{
+				bugX = halfBugWidth;
+			}
+			else if (bugX > width - halfBugWidth)
+			{
+				bugX = width - halfBugWidth;
+			}
+
+		}
 	}
 
 	public void keyPressed()
@@ -90,7 +122,12 @@ public class BugZap extends PApplet
 		}
 		if (key == ' ')
 		{
-			line(playerX, playerY, playerX, 0);
+			line(playerX, playerY, playerX, bugY);
+			if(playerX  > bugX - halfBugWidth && playerX < bugX + halfBugWidth)
+			{
+				score++;
+				resetBug();
+			}
 		}
 	}	
 

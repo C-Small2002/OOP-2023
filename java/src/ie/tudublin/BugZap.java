@@ -50,7 +50,7 @@ public class BugZap extends PApplet
 
 		score = 0;
 
-		playerX = width /2; //playerX = width * 0.5f
+		playerX = width / 2; 
 		playerY = height - 50;
 		playerWidth = 50;
 		playerSpeed = 5;
@@ -104,6 +104,7 @@ public class BugZap extends PApplet
 			{
 				bugX = width - halfBugWidth;
 			}
+			
 
 		}
 	}

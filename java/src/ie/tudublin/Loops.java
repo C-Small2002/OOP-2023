@@ -31,15 +31,6 @@ public class Loops extends PApplet {
 		
 		
 		switch(mode){
-			//case 0:
-			//{
-			//	if(mouseX < centerX && mouseX > centerX/2){
-//
-			//		rect(centerX, centerY, width/4, height);
-//
-			//	}
-			//	
-			//}
 			case 0:{
 				int numCircles = (int) (mouseX / 50.0f);
 				float d = width / (float) numCircles;
@@ -80,6 +71,18 @@ public class Loops extends PApplet {
 				else if (mouseX > width/4 && mouseX < width/2 && mouseY >height/4)
 				{
 					rect(width/4,height/4,width/4,height/4);
+				}
+				
+				break;
+			}
+
+			case 3:{
+
+				rect(width/2, height/3, width/4, height/4);
+				if (mouseX > width/2 && mouseX < width/2 + width/4){
+					fill(255);
+					rect(width/2, height/2, width/4, height/4);
+
 				}
 				
 				break;

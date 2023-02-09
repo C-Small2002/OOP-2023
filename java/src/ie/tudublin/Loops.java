@@ -55,6 +55,34 @@ public class Loops extends PApplet {
 					}
 				}
 				off+=mouseY/50.0f;
+				break;
+			}
+
+			case 1:{
+				
+				if(mouseX > width/4 && mouseX <width/2){
+					rect(width/4,0,width/4,height);
+				}
+				else if (mouseX > width/2 && mouseX < width*0.75){
+					rect(width/2,0,width/4,height);
+				}
+				
+				break;
+			}
+
+			case 2:{
+				if(mouseX > width/4 && mouseX < width/2 && mouseY < height && mouseY <height/4){
+					rect(width/4,0,width/4,height/4);
+				}
+				else if (mouseX > width/2 && mouseX < width *0.75 && mouseY < height && mouseY <height/4){
+					rect(width/2,0,width/4,height/4);
+				}
+				else if (mouseX > width/4 && mouseX < width/2 && mouseY >height/4)
+				{
+					rect(width/4,height/4,width/4,height/4);
+				}
+				
+				break;
 			}
 		}
 		

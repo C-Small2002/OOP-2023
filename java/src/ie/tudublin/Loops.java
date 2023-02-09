@@ -24,19 +24,37 @@ public class Loops extends PApplet {
 		println(mode);
 	}
 
+	float off = 0;
+
 	public void draw() {
 		background(0);
-		fill(230,240,210);
+		
 		
 		switch(mode){
-			case 0:
-			{
-				if(mouseX < centerX && mouseX > centerX/2){
+			//case 0:
+			//{
+			//	if(mouseX < centerX && mouseX > centerX/2){
+//
+			//		rect(centerX, centerY, width/4, height);
+//
+			//	}
+			//	
+			//}
+			case 0:{
+				int numCircles = (int) (mouseX / 50.0f);
+				float d = width / (float) numCircles;
+				for(int j =0; j<numCircles;j++){
 
-					rect(centerX, centerY, width/4, height);
-
+					for(int i = 0;i < numCircles; i++){
+						float x = (d * 0.5f) + d * i;
+						float y = (d * 0.5f) + d * j;
+						float c = ((i+j) / ((numCircles - 1) * 2.0f)) * 255.0f;
+						fill((c + off)%256 ,255,255);
+						circle(x,y,d);
+						
+					}
 				}
-				
+				off+=mouseY/50.0f;
 			}
 		}
 		

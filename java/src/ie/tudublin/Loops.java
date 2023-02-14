@@ -5,6 +5,7 @@ import processing.core.PApplet;
 public class Loops extends PApplet {
 
 	int mode = 0;
+	int x,y,z;
 	float centerX = width /2;
 	float centerY = height/2;
 	public void settings() {
@@ -83,6 +84,32 @@ public class Loops extends PApplet {
 				{
 					fill(200,255,255);
 					rect(width/2, height/3, width/4, height/4);
+				}
+				
+				break;
+			}
+			case 4:{
+				x = 0;
+				y = 0;
+				fill(255);
+				for (int i =0; i<10; i++){
+					fill((x+20)%256,255,255);
+					rect(x,y,75,75);
+					x += 75;
+					y += 75;
+				}
+				
+				break;
+			}
+
+			case 5:{
+				x = 100;
+				y = 100;
+				
+				for(int i =-5; i<=5; i++){
+		
+					line(x,y,x+400,y);
+					
 				}
 				
 				break;

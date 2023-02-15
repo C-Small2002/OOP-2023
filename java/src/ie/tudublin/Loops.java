@@ -15,6 +15,7 @@ public class Loops extends PApplet {
 
 	public void setup() {
 		colorMode(HSB);
+		stroke(255);
 	}
 
 
@@ -105,10 +106,16 @@ public class Loops extends PApplet {
 			case 5:{
 				x = 100;
 				y = 100;
+				z = 850;
 				
-				for(int i =-5; i<=5; i++){
+				for(int i =0; i<=100; i++){
 		
-					line(x,y,x+400,y);
+					line(x,y-(50 * i),z,y);
+					line(x-(50 * i),y,x,z);
+					
+					x+=50;
+					y+=50;
+					z+=50;
 					
 				}
 				

@@ -4,56 +4,79 @@ import javax.swing.text.TableView.TableRow;
 
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+import processing.data.Table;
+
 public class StarMap extends PApplet
 {
+
+	private boolean hab;
+	private String displayName;
+	private float distance;
+	private float xG;
+	private float yG;
+	private float zG;
+	private float absMag;
+
+    public StarMap(boolean hab, String displayName, float distance, float xG, float yG, float zG, float absMag) {
+		this.hab = hab;
+		this.displayName = displayName;
+		this.distance = distance;
+		this.xG = xG;
+		this.yG = yG;
+		this.zG = zG;
+		this.absMag = absMag;
+	}
+
+	private ArrayList<StarMap> stars = new ArrayList<StarMap>();
+
+	public StarMap(processing.data.TableRow r)
+ 	{
+ 		this(
+ 			r.getInt("Hab?") == 1, 
+ 			r.getString("Display Name"), 
+ 			r.getFloat("Distance"),
+ 			r.getFloat("Xg"),
+ 			r.getFloat("Yg"),
+ 			r.getFloat("Zg"),
+ 			r.getFloat("AbsMag")
+ 		);
+ 	}
+
+	public StarMap() {
+	}
+
+	void loadStars()
+ 	{
+		Table table = new Table();
+ 		table = loadTable("HabHYG15ly.csv", "header");
+ 		for(processing.data.TableRow r:table.rows())
+ 		{
+ 			StarMap s = new StarMap(r);
+ 			stars.add(s);
+		}
+ 	}
+
+	void printStars()
+	{
+		
+	}
+
 	public void settings()
 	{
-		size(500, 500);
+		size(800, 800);
 	}
 
 	public void setup() {
 		colorMode(HSB);
 		background(0);
+
+		loadStars();
+		printStars();
 		
 		smooth();
-		
-
-
 	}
-
-	void loadStars(){
-		Table table = loadTable("HabHYG15ly.csv", "header");
-
-		for(TableRow r:table.rows()){
-			Star s = new Star(r);
-			stars.add(s);
-		}
-	}
-
-	public Star(boolean hab, String displayName, float distance, float xG, float yG, float zG, float absMag) {
-        this.hab = hab;
-        this.displayName = displayName;
-        this.distance = distance;
-        this.xG = xG;
-        this.yG = yG;
-        this.zG = zG;
-        this.absMag = absMag;
-    }
-
-	public Star(TableRow tr){
-		this(
-			tr.getInt("Hab?") == 1,
-			tr.getString("Display Name"), 
-            tr.getFloat("Distance"),
-            tr.getFloat("Xg"),
-            tr.getFloat("Yg"),
-            tr.getFloat("Zg"),
-            tr.getFloat("AbsMag")
-			);
-	}
-
 	
-
 	public void drawGrid()
 	{
 		stroke(255);
@@ -69,11 +92,20 @@ public class StarMap extends PApplet
 		}
 		
 	}
+
+	public void drawStar()
+	{
+		for(int i = 0; i< stars.size(); i++){
+			line(this.xG,this.yG,this.xG,this.yG);
+		}
+		
+	}
 		
 	public void draw()
 	{	
-		strokeWeight(2);		
+		strokeWeight(1);		
 
 		drawGrid();
+		drawStar();
 	}
 }

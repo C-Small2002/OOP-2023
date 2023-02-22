@@ -30,6 +30,9 @@ public class Audio1 extends PApplet
 		ai = minim.getLineIn(Minim.MONO, frameSize, 44100, 16); //44100 = cd quality, 16 = 16bits bit rate
 		ab = ai.mix; //mix of left and right channels
 
+        ai = minim.getLineIn(Minim.MONO, frameSize, 44100, 16);
+        ab = ai.mix;
+		
 		smooth();
 		
 	}

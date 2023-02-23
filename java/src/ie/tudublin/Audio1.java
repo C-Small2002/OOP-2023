@@ -107,7 +107,15 @@ public class Audio1 extends PApplet
 				background(0);
 				for(int i = 0; i<ab.size(); i++)
 				{
-
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+                    float f = ab.get(i) * halfH;
+                    //line(i, halfH + f, i, halfH - f); 
+                    //line(halfH + f, i, halfH - f, i);
+                    line(height + f +50, i, height - f +50, i);
+                    line(height + f -1050, i, height - f -1050, i);
+                    line(i, halfH + f + 500, i, halfH - f + 500); 
+                    line(i, halfH + f - 500, i, halfH - f -500); 
 				}
 				break;
 

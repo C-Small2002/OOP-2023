@@ -121,6 +121,15 @@ public class Audio1 extends PApplet
 				}
 				break;
 
+        case 4:
+                background(0);
+                for(int i = 0; i<ab.size(); i++)
+                {
+                    noFill();
+                    rectMode(CENTER);
+                    square(cx, cy, smoothedAmplitude * 1000);
+                }
+
         }
         
 

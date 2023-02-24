@@ -137,6 +137,22 @@ public class Audio1 extends PApplet
                     rectMode(CENTER);
                     square(cx, cy, smoothedAmplitude * 1000);
                 }
+                break;
+
+        case 5:
+                background(0);
+                for (int i = 0; i<ab.size(); i++)
+                {
+                    float c = map(ab.get(i), -1, 1, 0, 255);
+                    //float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+                    float f = ab.get(i) * halfH;
+                    noFill();
+                    rectMode(CENTER);
+                    //square(cx, cy, 350);
+                    line(i+150, halfH + f, i-150, halfH - f);       
+                }
+                break;
 
         }
         

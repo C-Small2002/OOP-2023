@@ -150,7 +150,7 @@ public class Audio1 extends PApplet
                     noFill();
                     rectMode(CENTER);
                     //square(cx, cy, 350);
-                    line(i+150, halfH + f, i-150, halfH - f);       
+                   line(i+150, halfH + f, i-150, halfH - f);    
                 }
                 break;
 

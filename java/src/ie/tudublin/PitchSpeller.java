@@ -13,13 +13,20 @@ public class PitchSpeller {
 
     public String spell(float frequency){
 
+        float minDiff = Float.MAX_VALUE;
+        int minIndex;
+
         for(int i = 0; i < frequencies.length; i++){
-            if(frequency == Math.round(frequencies[i])){
-                return spellings[i];
+        
+            float diff = Math.abs(frequencies[i])
+
+            if(diff < minDiff)){
+                minIndex = i;
+                minDiff = diff;
             }
         }
 
-        return "Could not find frequency";
+        return spellings[minIndex];
 
     }
 

@@ -14,13 +14,13 @@ public class PitchSpeller {
     public String spell(float frequency){
 
         float minDiff = Float.MAX_VALUE;
-        int minIndex;
+        int minIndex = -1;
 
         for(int i = 0; i < frequencies.length; i++){
         
-            float diff = Math.abs(frequencies[i])
+            float diff = Math.abs(frequency - frequencies[i]);
 
-            if(diff < minDiff)){
+            if(diff < minDiff){
                 minIndex = i;
                 minDiff = diff;
             }

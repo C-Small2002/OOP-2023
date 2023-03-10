@@ -11,6 +11,17 @@ public class LifeBoard {
 
     float cellWidth;
 
+    public void keyPressed(){
+        if(p.keyCode == ' '){
+            while(true){
+                if(p.keyCode == ' '){
+                    break;
+                }
+
+            }
+        }
+    }
+
     public boolean getCell(int row, int col)
     {
         if (row >= 0 && row < size && col >= 0 && col < size)
@@ -78,7 +89,8 @@ public class LifeBoard {
                 // dead with 3 neighboiurs comes to life
             }
         }
-        boolean[][] temp = board;
+        boolean[][] temp;
+        temp = board;
         board = next;
         next = temp;
     }

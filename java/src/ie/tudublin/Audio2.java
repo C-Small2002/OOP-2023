@@ -39,13 +39,6 @@ public class Audio2 extends PApplet{
         colorMode(HSB);
         stroke(255);
         float half = height / 2;
-        for(int i = 0 ; i < ab.size() ; i ++)
-        {
-            stroke(map(i, 0, ab.size(), 0, 255), 255, 255);
-            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
-            float f = abs(lerpedBuffer[i] * half * 2.0f);
-            line(i, half + f, i, half - f);
-        }
 
         fft.forward(ab);
         stroke(255);

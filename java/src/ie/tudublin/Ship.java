@@ -12,6 +12,8 @@ public class Ship {
     private float halfSize;
     PApplet p;
 
+    YASC yasc = ((YASC)p);
+
     public Ship(float x, float y, float size, int c, PApplet p){
         pos = new PVector(x,y);
         halfSize = size /2;
@@ -23,25 +25,34 @@ public class Ship {
 
     public void move(){
 
+        YASC yasc = ((YASC)p);
+
         forward.x = PApplet.sin(rot);
         forward.y = -PApplet.cos(rot);
-        if(p.keyPressed){
-            if(p.keyCode == PApplet.LEFT){
+        if(yasc.keyPressed){
+            if(yasc.keys[PApplet.LEFT]){
                 rot -= 0.1f;
             }
 
-            if(p.keyCode == PApplet.RIGHT){
+            if(yasc.keys[PApplet.RIGHT]){
                 rot += 0.1f;
             }
 
-            if(p.keyCode == PApplet.UP){
+            if(yasc.keys[PApplet.UP]){
                 pos.x += forward.x;
                 pos.y += forward.y;
             }
 
-            if(p.keyCode == PApplet.DOWN){
+            if(yasc.keys[PApplet.DOWN]){
                 pos.x -= forward.x;
                 pos.y -= forward.y;
+            }
+
+            if(yasc.keys[' ']){
+                PVector inFront = PVector.add(pos,PVector.mult(forward, 30));
+                Bullet b = new Bullet(inFront.x,inFront.y, rot, c, p);
+
+                ((YASC)p).bullets.add(b);
             }
         }
     }

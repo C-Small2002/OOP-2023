@@ -29,7 +29,7 @@ public class Ship {
 
         forward.x = PApplet.sin(rot);
         forward.y = -PApplet.cos(rot);
-        if(yasc.keyPressed){
+        if(yasc.keyPressed){    
             if(yasc.keys[PApplet.LEFT]){
                 rot -= 0.1f;
             }

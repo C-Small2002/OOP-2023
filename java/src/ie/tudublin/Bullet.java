@@ -15,7 +15,7 @@ public class Bullet {
         pos = new PVector(x,y);
         forward = new PVector(0,-1);
         speed = 5;
-        this.p = p;
+        this.p = p; 
         this.rot = rot;
         this.c = c;
     }

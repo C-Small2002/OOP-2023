@@ -65,7 +65,7 @@ public class Main
 		penny.setName("Penny");
 		penny.speak();
 
-		audio3();
+		starMap();
 	}
 	
 }

@@ -1,17 +1,17 @@
 package ie.tudublin;
 
-import javax.swing.text.TableView.TableRow;
-
 import processing.core.PApplet;
 
 import java.util.ArrayList;
 import processing.data.Table;
+import processing.data.TableRow;
 
 public class StarMap extends PApplet
 {
    
 
 	private ArrayList<Star> stars = new ArrayList<Star>();
+	float border;
 
 
 	public StarMap() {
@@ -19,9 +19,9 @@ public class StarMap extends PApplet
 
 	void loadStars()
  	{
-		Table table = new Table();
- 		table = loadTable("HabHYG15ly.csv", "header");
- 		for(processing.data.TableRow r:table.rows())
+		
+ 		Table table = loadTable("HabHYG15ly.csv", "header");
+ 		for(TableRow r : table.rows())
  		{
  			Star s = new Star(r);
  			stars.add(s);
@@ -69,11 +69,20 @@ public class StarMap extends PApplet
 		
 	}
 
+	public void drawStar(){
+		for(Star s : stars){
+			s.render(this);
+		}
+	}
+
 		
 	public void draw()
 	{	
 		strokeWeight(1);		
 
+		background(0);
+		drawStar();
 		drawGrid();
+		
 	}
 }
